@@ -1,4 +1,4 @@
-git clone git@github.com:maaanuuuuuuu/mediaSorter.git
+git clone git://github.com/maaanuuuuuuu/mediaSorter.git
 
 npm install
 
