@@ -53,11 +53,14 @@ const app = {
     //The Grand Budapest Hotel (2014).mp4
     let title = film.name || film.title
     let genre = app.selectGenre(film)
-    let date = film.year ? '(' + film.year + ')' : ''
+    let date = film.year ? ' (' + film.year + ')' : ''
     let extension = film.file.split('.').pop()
-    let fileName = genre + '/' + title + ' ' + date + '.' + extension
-    if (!fs.existsSync(genre)){
-      fs.mkdirSync(genre)
+    let fileName = conf.destDir + genre + '/' + title + '' + date + '.' + extension
+    if (!fs.existsSync(conf.destDir) && !conf.testMode){
+      fs.mkdirSync(conf.destDir)
+    }
+    if (!fs.existsSync(conf.destDir + genre) && !conf.testMode){
+      fs.mkdirSync(conf.destDir + genre)
     }
     return fileName
   },
@@ -65,10 +68,14 @@ const app = {
     fileList.forEach(file => {
       let oldFile = file.dir+file.file
       let newFile = app.generateNewFileName(file)
-      fs.rename(oldFile, newFile, (err) => {
-        if (err) throw err
-        console.log(file.title + ' moved to ' + newFile)
-      })
+      if (conf.testMode) {
+        console.log(oldFile + '->' + newFile)
+      } else {
+        fs.rename(oldFile, newFile, (err) => {
+          if (err) throw err
+          console.log(file.title + ' moved to ' + newFile)
+        })
+      }
     })
   },
   getAdditionalInfosListPromise: (filmList) => {

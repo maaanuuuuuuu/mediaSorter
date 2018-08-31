@@ -1,4 +1,6 @@
 {
   "sourceDir": "films/",
-  "omdbAPIKey": "yourkey"
+  "destDir": "films2/",
+  "omdbAPIKey": "yourkey",
+  "testMode": true
 }
