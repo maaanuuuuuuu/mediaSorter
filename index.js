@@ -10,6 +10,7 @@ const app = {
     let fileList = app.listFiles(conf.sourceDir, [])
     app.guessFilmListPromise(fileList).then((filmsList) => {
       app.generateGenrePriorities(filmsList)
+      console.log(app.genrePriorities)
       app.moveFilms(filmsList)
     }).catch((error) => {
       console.log(error)
@@ -71,7 +72,7 @@ const app = {
       if (conf.testMode) {
         console.log(oldFile + '->' + newFile)
       } else {
-        if (app.acceptedExtensions.indexOf(newFile.split('.').pop()) !== -1) {
+        if (conf.acceptedExtensions.indexOf(newFile.split('.').pop()) !== -1) {
           fs.exists(newFile, function(exists){
             if (!exists) {
               fs.rename(oldFile, newFile, (err) => {
