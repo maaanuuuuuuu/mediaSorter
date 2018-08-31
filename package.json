@@ -1,0 +1,18 @@
+{
+  "name": "mediaSorter",
+  "version": "1.0.0",
+  "description": "Sorts films",
+  "main": "index.js",
+  "bin": {
+    "mediaSorter": "index.js"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "author": "desir.emmanuel@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "guessit-wrapper": "^1.0.1",
+    "imdb-api": "^4.0.2"
+  }
+}
