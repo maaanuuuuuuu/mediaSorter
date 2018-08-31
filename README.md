@@ -1,8 +1,8 @@
 git clone git://github.com/maaanuuuuuuu/mediaSorter.git
 
-npm install
-
 cd mediaSorter
+
+npm install
 
 touch conf.json
 
