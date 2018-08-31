@@ -8,4 +8,4 @@ touch conf.json
 
 // get a omdb apikey
 
-node .\index.js
+node ./index.js
