@@ -78,7 +78,7 @@ const app = {
               console.log(file.title + ' moved to ' + newFile)
             })
           }
-        }
+        })
       }
     })
   },
