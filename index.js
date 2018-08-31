@@ -71,14 +71,16 @@ const app = {
       if (conf.testMode) {
         console.log(oldFile + '->' + newFile)
       } else {
-        fs.exists(newFile, function(exists){
-          if (!exists) {
-            fs.rename(oldFile, newFile, (err) => {
-              if (err) throw err
-              console.log(file.title + ' moved to ' + newFile)
-            })
-          }
-        })
+        if (app.acceptedExtensions.indexOf(newFile.split('.').pop()) !== -1)
+          fs.exists(newFile, function(exists){
+            if (!exists) {
+              fs.rename(oldFile, newFile, (err) => {
+                if (err) throw err
+                console.log(file.title + ' moved to ' + newFile)
+              })
+            }
+          })
+        }
       }
     })
   },
